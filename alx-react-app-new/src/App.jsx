@@ -1,3 +1,4 @@
+import Counter from './components/Counter'
 import UserProfile from './components/UserProfile'
 import Footer from './components/Footer'
 import MainContent from './components/MainContent'
@@ -8,6 +9,7 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 
+
 function App() {
   const [count, setCount] = useState(0)
 
@@ -15,11 +17,13 @@ function App() {
     
     <>
       <div>
+        <Counter />
         <UserProfile name="Alice" age="25" bio="Loves hiking and photography" />
         <Header />
         <MainContent />
         <Footer />
          <WelcomeMessage /> 
+         
         <a href="https://vite.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
         </a>
