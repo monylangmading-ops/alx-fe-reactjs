@@ -1,8 +1,7 @@
 import UserInfo from './components/UserInfo'
 import UserDetails from "./components/UserDetails"
 import UserProfile from "./components/UserProfile"
-import UserContext  from "./userContext";
-import React, {useState} from "react";
+import UserContext  from "./UserContext";
 import Footer from './components/Footer'
 import MainContent from './components/MainContent'
 import Header from './components/Header'
