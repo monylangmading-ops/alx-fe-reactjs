@@ -14,4 +14,26 @@ function Navbar() {
     </nav>
   );
 }
+const styles = {
+  navbar: {
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+    padding: "15px 30px",
+    backgroundColor: "#111",
+    color: "white",
+  },
+  logo: {
+    margin: 0,
+  },
+  links: {
+    display: "flex",
+    gap: "20px",
+  },
+  link: {
+    color: "white",
+    textDecoration: "none",
+    fontSize: "16px",
+  },
+};
 export default Navbar;
