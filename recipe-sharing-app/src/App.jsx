@@ -1,3 +1,5 @@
+
+import SearchBar from './components/SearchBar';
 import { Routes, Route } from 'react-router-dom';
 import RecipeDetails from './components/RecipeDetails';
 import EditRecipeForm from './components/EditRecipeForm';
@@ -18,6 +20,7 @@ function App() {
       <RecipeList />
       <EditRecipeForm />
       <RecipeDetails />
+      <SearchBar />
       
         <a href="https://vite.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
