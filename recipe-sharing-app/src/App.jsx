@@ -1,14 +1,11 @@
-
-import SearchBar from './components/SearchBar';
-import { Routes, Route } from 'react-router-dom';
-import RecipeDetails from './components/RecipeDetails';
-import EditRecipeForm from './components/EditRecipeForm';
-import AddRecipeForm from './components/AddRecipeForm';
-import RecipeList from './components/RecipeList';
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import RecipeList from "./components/RecipeList";
+import RecipeDetails from "./components/RecipeDetails";
+import AddRecipeForm from "./components/AddRecipeForm";
+import EditRecipeForm from "./components/EditRecipeForm";
+import FavoritesList from "./components/FavoritesList";
+import RecommendationsList from "./components/RecommendationsList";
+import SearchBar from "./components/SearchBar";
 
 function App() {
   const [count, setCount] = useState(0)
@@ -21,6 +18,14 @@ function App() {
       <EditRecipeForm />
       <RecipeDetails />
       <SearchBar />
+      <Routes>
+        <Route path="/" element={<RecipeList />} />
+        <Route path="/recipe/:id" element={<RecipeDetails />} />
+        <Route path="/add" element={<AddRecipeForm />} />
+        <Route path="/edit/:id" element={<EditRecipeForm />} />
+        <Route path="/favorites" element={<FavoritesList />} />
+        <Route path="/recommendations" element={<RecommendationsList />} />
+      </Routes>
       
         <a href="https://vite.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />

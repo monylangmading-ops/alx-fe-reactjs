@@ -1,50 +1,52 @@
-
-import { useParams, Link, useNavigate } from 'react-router-dom';
-import { useRecipeStore } from '../store/recipeStore';
-import DeleteRecipeButton from './DeleteRecipeButton';
+import { useParams, Link, useNavigate } from "react-router-dom";
+import { useRecipeStore } from "../recipeStore";
+import FavoriteButton from "./FavoriteButton";
 
 const RecipeDetails = () => {
   const { id } = useParams();
-  const numericId = Number(id); 
-  const recipe = useRecipeStore((state) =>
-    state.recipes.find((r) => r.id === numericId || r.id === id)
+  const recipeId = Number(id);
+
+  const recipe = useRecipeStore(state =>
+    state.recipes.find(r => r.id === recipeId)
   );
+
+  const deleteRecipe = useRecipeStore(state => state.deleteRecipe);
   const navigate = useNavigate();
 
-  if (!recipe) {
-    return (
-      <div>
-        <p>Recipe not found.</p>
-        <button onClick={() => navigate('/')}>Back home</button>
-      </div>
-    );
-  }
+  if (!recipe) return <p>Recipe not found</p>;
+
+  const handleDelete = () => {
+    deleteRecipe(recipeId);
+    navigate("/");
+  };
 
   return (
-    <div style={{ padding: 20 }}>
+    <div>
       <h1>{recipe.title}</h1>
       <p>{recipe.description}</p>
-      {recipe.ingredients && (
-        <>
-          <h3>Ingredients</h3>
-          <ul>
-            {recipe.ingredients.map((ing, i) => (
-              <li key={i}>{ing}</li>
-            ))}
-          </ul>
-        </>
-      )}
 
-      <div style={{ marginTop: 12 }}>
-        <Link to={`/edit/${recipe.id}`} style={{ marginRight: 12 }}>
-          Edit Recipe
-        </Link>
-        <DeleteRecipeButton recipeId={recipe.id} />
-      </div>
+      <h3>Ingredients:</h3>
+      <ul>
+        {(recipe.ingredients || []).map((ing, idx) => (
+          <li key={idx}>{ing}</li>
+        ))}
+      </ul>
 
-      <div style={{ marginTop: 20 }}>
-        <Link to="/">← Back to list</Link>
-      </div>
+      <p><strong>Prep Time:</strong> {recipe.prepTime || "N/A"} minutes</p>
+
+      <FavoriteButton recipeId={recipeId} />
+
+      <br /><br />
+
+      <Link to={`/edit/${recipeId}`}>✏️ Edit Recipe</Link>
+      <br />
+
+      <button onClick={handleDelete} style={{ marginTop: "10px", color: "red" }}>
+        🗑 Delete Recipe
+      </button>
+
+      <br /><br />
+      <Link to="/">Back to Recipes</Link>
     </div>
   );
 };
