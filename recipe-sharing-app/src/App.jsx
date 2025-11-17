@@ -1,3 +1,6 @@
+import { Routes, Route } from 'react-router-dom';
+import RecipeDetails from './components/RecipeDetails';
+import EditRecipeForm from './components/EditRecipeForm';
 import AddRecipeForm from './components/AddRecipeForm';
 import RecipeList from './components/RecipeList';
 import { useState } from 'react'
@@ -13,6 +16,9 @@ function App() {
       <div>
         <AddRecipeForm />
       <RecipeList />
+      <EditRecipeForm />
+      <RecipeDetails />
+      
         <a href="https://vite.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
         </a>

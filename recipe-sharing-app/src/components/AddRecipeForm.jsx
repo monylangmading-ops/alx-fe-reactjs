@@ -1,58 +1,40 @@
-import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { useRecipeStore } from '../store/recipeStore';
 
-const AddRecipeForm = () => {
-  const addRecipe = useRecipeStore((state) => state.addRecipe);
-  const [title, setTitle] = useState('');
-  const [description, setDescription] = useState('');
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    if (!title.trim() || !description.trim()) return;
-
-    addRecipe({
-      id: Date.now(),
-      title,
-      description,
-    });
-
-    setTitle('');
-    setDescription('');
-  };
+const RecipeList = () => {
+  const recipes = useRecipeStore((state) => state.recipes);
 
   return (
-    <form 
-      onSubmit={handleSubmit}
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        gap: "10px",
-        maxWidth: "400px"
-      }}
-    >
-      <h2>Add New Recipe</h2>
+    <div style={{ marginTop: '20px' }}>
+      <h2>Recipes</h2>
+      {recipes.length === 0 && <p>No recipes yet 👀</p>}
 
-      <input
-        type="text"
-        placeholder="Recipe title..."
-        value={title}
-        onChange={(e) => setTitle(e.target.value)}
-        style={{ padding: "10px" }}
-      />
-
-      <textarea
-        placeholder="Recipe description..."
-        value={description}
-        onChange={(e) => setDescription(e.target.value)}
-        style={{ padding: "10px", height: "100px" }}
-      ></textarea>
-
-      <button type="submit" style={{ padding: "10px" }}>
-        Add Recipe
-      </button>
-    </form>
+      {recipes.map((recipe) => (
+        <div
+          key={recipe.id}
+          style={{
+            border: '1px solid #ddd',
+            padding: '10px',
+            marginBottom: '10px',
+            borderRadius: '8px',
+          }}
+        >
+          <h3>
+            <Link to={`/recipes/${recipe.id}`} style={{ textDecoration: 'none' }}>
+              {recipe.title}
+            </Link>
+          </h3>
+          <p>{recipe.description}</p>
+          <div style={{ marginTop: 8 }}>
+            <Link to={`/edit/${recipe.id}`} style={{ marginRight: 10 }}>
+              Edit
+            </Link>
+            <Link to={`/recipes/${recipe.id}`}>View details</Link>
+          </div>
+        </div>
+      ))}
+    </div>
   );
 };
 
-export default AddRecipeForm;
+export default RecipeList;
