@@ -8,11 +8,9 @@ function App() {
 
   return (
     <>
-      <div>
-          <div style={{ padding: "20px" }}>
-      <h1>GitHub User Search App</h1>
+      <div style={{ padding: "20px" }}>
+         <h1>GitHub User Search App</h1>
       <p>Project setup successful. More features coming soon!</p>
-    </div>
         <a href="https://vite.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
         </a>
