@@ -1,4 +1,3 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
@@ -10,9 +9,10 @@ function App() {
   return (
     <>
       <div>
-         <Router >
-        <h1>GitHub User Search</h1>
-        </Router>
+          <div style={{ padding: "20px" }}>
+      <h1>GitHub User Search App</h1>
+      <p>Project setup successful. More features coming soon!</p>
+    </div>
         <a href="https://vite.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
         </a>
