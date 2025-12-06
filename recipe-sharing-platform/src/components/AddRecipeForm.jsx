@@ -1,10 +1,4 @@
 import React, { useState } from "react";
-
-
-
-setError("");
-
-
 const newRecipe = {
 title,
 ingredients: ingredientList,
