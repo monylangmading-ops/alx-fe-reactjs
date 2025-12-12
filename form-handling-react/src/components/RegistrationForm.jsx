@@ -1,4 +1,5 @@
 import { useState } from "react";
+
 export default function RegistrationForm() {
 const [formData, setFormData] = useState({
 username: "",
@@ -6,10 +7,11 @@ email: "",
 password: "",
 });
 
+
 const { username, email, password } = formData;
 
 
-const [error, setError] = useState("");
+const [errorss, setErrors] = useState("");
 
 
 const handleChange = (e) => {
@@ -20,11 +22,17 @@ setFormData((prev) => ({ ...prev, [name]: value }));
 
 const handleSubmit = (e) => {
 e.preventDefault();
-
-
-if (!username ,!email, !password) {
-setError("All fields are required!");
+setErrors("Username is required");
 return;
+}
+if (!email) {
+setErrors("Email is required");
+return;
+}
+if (!password) {
+setErrors("Password is required");
+return;
+}
 }
 
 
@@ -40,7 +48,7 @@ body: JSON.stringify(formData),
 })
 .then((res) => res.json())
 .then((data) => console.log("Mock API Response:", data));
-};
+;
 
 
 return (
@@ -78,9 +86,9 @@ className="p-2 border rounded"
 />
 
 
-{error && <p className="text-red-500 text-sm">{error}</p>}
+{errors && <p className="text-red-500 text-sm">{errors}</p>}
 
 
 <button className="bg-blue-600 text-white p-2 rounded">Register</button>
 </form>
-)};
+);
