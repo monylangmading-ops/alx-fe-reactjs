@@ -22,9 +22,13 @@ setFormData((prev) => ({ ...prev, [name]: value }));
 
 const handleSubmit = (e) => {
 e.preventDefault();
-setErrors("Username is required");
+
+if (!username) {
+ setErrors("Username is required");
 return;
 }
+
+
 if (!email) {
 setErrors("Email is required");
 return;
@@ -91,4 +95,4 @@ className="p-2 border rounded"
 
 <button className="bg-blue-600 text-white p-2 rounded">Register</button>
 </form>
-);
+)};
