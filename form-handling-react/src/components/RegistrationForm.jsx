@@ -1,12 +1,12 @@
 import { useState } from "react";
-
-
 export default function RegistrationForm() {
 const [formData, setFormData] = useState({
 username: "",
 email: "",
 password: "",
 });
+
+const { username, email, password } = formData;
 
 
 const [error, setError] = useState("");
@@ -32,6 +32,7 @@ setError("");
 console.log("Submitting controlled form:", formData);
 
 
+// mock API simulation
 fetch("https://jsonplaceholder.typicode.com/users", {
 method: "POST",
 headers: { "Content-Type": "application/json" },
@@ -51,7 +52,7 @@ return (
 type="text"
 name="username"
 placeholder="Username"
-value={formData.username}
+value={username}
 onChange={handleChange}
 className="p-2 border rounded"
 />
@@ -61,7 +62,7 @@ className="p-2 border rounded"
 type="email"
 name="email"
 placeholder="Email"
-value={formData.email}
+value={email}
 onChange={handleChange}
 className="p-2 border rounded"
 />
@@ -71,7 +72,7 @@ className="p-2 border rounded"
 type="password"
 name="password"
 placeholder="Password"
-value={formData.password}
+value={password}
 onChange={handleChange}
 className="p-2 border rounded"
 />
@@ -82,5 +83,4 @@ className="p-2 border rounded"
 
 <button className="bg-blue-600 text-white p-2 rounded">Register</button>
 </form>
-);
-}
+)};
