@@ -9,12 +9,13 @@ const res = await fetch('https://jsonplaceholder.typicode.com/posts');
 return res.json();
 };
 
-
-const { data, isLoading, isError, refetch } = useQuery({
+const { data, isLoading, error: error, refetch } = useQuery({
+refetchOnWindowFocus: true,
+keepPreviousData: true,
 queryKey: ['posts'],
 queryFn: fetchPosts,
-staleTime: 30000, 
-cacheTime: 60000, 
+staleTime: 30000,
+cacheTime: 60000,
 });
 
 
