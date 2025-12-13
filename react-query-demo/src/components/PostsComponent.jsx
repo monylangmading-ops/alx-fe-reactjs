@@ -25,7 +25,7 @@ return (
 
 
 {isLoading && <p className="text-blue-500">Loading posts...</p>}
-{error && <p className="text-red-500">Failed to fetch posts </p>}
+{isError && <p className="text-red-500">Failed to fetch posts </p>}
 
 
 <button
