@@ -1,4 +1,4 @@
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import Home from './pages/Home';
 import About from './pages/About';
 import Login from './pages/Login';
@@ -18,7 +18,7 @@ function App() {
       <div>
         <h1 className="text-2xl font-bold mb-5">Advanced React Router Demo</h1>
 
-
+<BrowserRouter>
 <Routes>
 
 <Route path="/" element={<Home />} />
@@ -30,7 +30,10 @@ function App() {
 </Route>
 
 <Route path="/blog/:postId" element={<BlogPost />} />
+<Route path="/blog/:id" element={<BlogPost />} />
 </Routes>
+</BrowserRouter>
+
 
         <a href="https://vite.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
