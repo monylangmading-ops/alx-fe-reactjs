@@ -1,7 +1,7 @@
-import { useState } from "react";
+import React, { useState } from "react";
 
 
-export default function AddTodoForm({ addTodo }) {
+const AddTodoForm = ({ addTodo }) => {
 const [text, setText] = useState("");
 
 
@@ -16,12 +16,15 @@ setText("");
 return (
 <form onSubmit={handleSubmit}>
 <input
+type="text"
 placeholder="Add todo"
 value={text}
 onChange={(e) => setText(e.target.value)}
-data-testid="todo-input"
 />
-<button type="submit" data-testid="add-btn">Add</button>
+<button type="submit">Add</button>
 </form>
 );
-}
+};
+
+
+export default AddTodoForm;
